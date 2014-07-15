@@ -1,0 +1,24 @@
+{
+  "name": "whiteboard-imageupload",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.3.4",
+    "jquery": "~1.11.0",
+    "core-elements": "Polymer/core-elements#~0.3.4",
+    "angular": "v1.3.0-build.2916+sha.d15cea4",
+    "angular-rx": "~0.0.5",
+    "angular-sanitize": "v1.3.0-build.2916+sha.d15cea4",
+    "angular-dragdrop-ganarajpr": "~1.0.3"
+  },
+  "devDependencies": {},
+  "overrides": {
+    "ace-builds": {
+      "main": "src-min-noconflict/ace.js"
+    },
+    "Rx": {
+      "main": [
+        "dist/rx.min.js"
+      ]
+    }
+  }
+}
