@@ -20,8 +20,25 @@
           angular.element(element).addClass('on-drag-hover');
           return false;
         });
-        element.bind('dragleave', function(e) {
+
+        element.bind('dragleave drop', function(e) {
           angular.element(element).removeClass('on-drag-hover');
+        });
+
+        element.bind('drop', function(e) {
+        	e.preventDefault();
+        	if(e.dataTransfer.types.indexOf('Files') === -1) {
+        		return;
+        	}
+
+        	// handle file upload
+        	// get FileList
+        	var files = e.dataTransfer.files;
+        	for(var i=0, f; f=files[i]; i++) {
+        		console.log(f.name + ': ' + 'size: ' + f.size + '; type: ' + f.type);
+        	}
+
+        	return false;
         });
       }
     };
@@ -33,7 +50,7 @@
       link: function(scope, element, attrs) {
         angular.element(element).attr('draggable', 'true');
         element.bind('dragstart', function(e) {
-          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.effectAllowed = 'copy';
           e.dataTransfer.setData('text/html', this.innerHTML);
         });
       }

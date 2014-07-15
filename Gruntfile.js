@@ -152,7 +152,7 @@ module.exports = function(grunt) {
     sass: {
       options: {
         includePaths: [
-          'bower_components'
+          '<%= config.app %>/bower_components'
         ]
       },
       dist: {
@@ -323,11 +323,19 @@ module.exports = function(grunt) {
         }]
       },
       styles: {
-        expand: true,
-        dot: true,
-        cwd: '<%= config.app %>/styles',
-        dest: '.tmp/styles/',
-        src: '{,*/}*.css'
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>/styles',
+          dest: '.tmp/styles/',
+          src: '{,*/}*.css'
+        },{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>/bower_components/fontawesome/fonts',
+          dest: '.tmp/fonts/',
+          src: '*'
+        }]
       }
     },
 

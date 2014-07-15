@@ -8,7 +8,9 @@
     "angular": "v1.3.0-build.2916+sha.d15cea4",
     "angular-rx": "~0.0.5",
     "angular-sanitize": "v1.3.0-build.2916+sha.d15cea4",
-    "angular-dragdrop-ganarajpr": "~1.0.3"
+    "angular-dragdrop-ganarajpr": "~1.0.3",
+    "bootstrap-sass": "~3.0.2",
+    "fontawesome": "~4.1.0"
   },
   "devDependencies": {},
   "overrides": {

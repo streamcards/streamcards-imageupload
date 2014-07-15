@@ -1,50 +1,50 @@
 <!doctype html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <title>whiteboard imageupload</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="/favicon.ico">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css styles/vendor.css -->
-        <!-- bower:css -->
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-    </head>
-    <body ng-app="whiteboard" ng-controller="MainCtrl">
-        <!--[if lt IE 10]>
+
+<head>
+  <meta charset="utf-8">
+  <title>whiteboard imageupload</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+
+<body ng-app="whiteboard" ng-controller="MainCtrl">
+  <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
 
-        <div class="hero-unit" ui-drop>
-          <h1>Drag items here</h1>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-          <p>&nbsp;</p>
-        </div>
+  <div class="upload-area" ui-drop>
+    Drag any kind of file here to upload
+  </div>
 
-        <h2 ui-draggable="true">Try dragging this</h2>
+  <h2 ui-draggable="true">Try dragging this</h2>
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/platform/platform.js"></script>
-        <script src="bower_components/polymer/polymer.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/Rx/dist/rx.min.js"></script>
-        <script src="bower_components/angular-rx/rx.angular.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/angular-dragdrop-ganarajpr/draganddrop.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/platform/platform.js"></script>
+  <script src="bower_components/polymer/polymer.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/Rx/dist/rx.min.js"></script>
+  <script src="bower_components/angular-rx/rx.angular.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-dragdrop-ganarajpr/draganddrop.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-        <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/module.js"></script>
-        <!-- endbuild -->
+  <!-- build:js({app,.tmp}) scripts/main.js -->
+  <script src="scripts/module.js"></script>
+  <!-- endbuild -->
 </body>
+
 </html>

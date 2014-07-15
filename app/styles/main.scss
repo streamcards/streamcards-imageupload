@@ -1,10 +1,27 @@
 // bower:scss
 // endbower
 
+$fa-css-prefix: icon;
+
+@import 
+    "fontawesome/scss/variables",
+    "fontawesome/scss/mixins",
+    "fontawesome/scss/path",
+    "fontawesome/scss/core",
+    "fontawesome/scss/larger",
+    "fontawesome/scss/fixed-width",
+    "fontawesome/scss/list",
+    "fontawesome/scss/bordered-pulled",
+    "fontawesome/scss/spinning",
+    "fontawesome/scss/rotated-flipped",
+    "fontawesome/scss/stacked",
+    "fontawesome/scss/icons";
+
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    text-align: center;
 }
 
 .hero-unit {
@@ -22,9 +39,39 @@ body {
         letter-spacing: -1px;
     }
 
+}
+
+.upload-area {
+
+    @extend .icon;
+    @extend .icon-cloud-upload;
+
+    $color: #999;
+    text-align: center;
+    font-size: 150%;
+    width: 8em;
+    height: 8em;
+    color: $color;
+    border: 10px dotted $color;
+    border-radius: 15%;
+    background-color: #e0e0e0;
+    padding: 1em;
+
+    &:before {
+        display: block;
+        text-align: center;
+        font-size: 500%;
+    }
+
     &.on-drag-hover {
         opacity: .5;
     }
+
+}
+
+.upload-area {
+    display: inline-block;
+    margin: 1em;
 }
 
 .browsehappy {
