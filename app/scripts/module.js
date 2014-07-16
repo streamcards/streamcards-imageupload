@@ -22,23 +22,27 @@
    * Upload directive
    *
    */
-  app.directive('uiUpload', function() {
+  app.directive('uiUpload', function($compile) {
+    var template;
     return {
       restrict: 'E',
-      template: '<li ng-repeat="f in files">{{f.name}}</li>',
       scope: {
         fileStream: '=',
         filter: '='
       },
-      link: function(scope, element, attrs, controller) {
-        var filter = new RegExp(scope.filter);
-        scope.fileStream
-          .filter(function(file) {
-            return file.type.match(filter);
-          })
-          .subscribe(function(file) {
-            controller.addFile(file);
-          });
+      compile: function(elem) {
+        template = $compile(elem.html());
+        return function(scope, element, attrs, controller) {
+          var filter = new RegExp(scope.filter);
+          scope.fileStream
+            .filter(function(file) {
+              return file.type.match(filter);
+            })
+            .subscribe(function(file) {
+              controller.addFile(file);
+            });
+          element.replaceWith(template(scope));
+        };
       },
       controller: function($scope) {
         $scope.files = [];
