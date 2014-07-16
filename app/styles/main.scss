@@ -15,7 +15,9 @@ $fa-css-prefix: icon;
     "fontawesome/scss/spinning",
     "fontawesome/scss/rotated-flipped",
     "fontawesome/scss/stacked",
-    "fontawesome/scss/icons";
+    "fontawesome/scss/icons",
+
+    "mixins";
 
 body {
     background: #fafafa;
@@ -24,40 +26,28 @@ body {
     text-align: center;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-    h1 {
-        font-size: 60px;
-        line-height: 1;
-        letter-spacing: -1px;
-    }
-
-}
-
 .upload-area {
 
     @extend .icon;
     @extend .icon-cloud-upload;
 
-    $color: #999;
+    $color: desaturate(lighten(blue, 15%), 70%);
+    $bgColor: lighten($color, 30%);
+
+    color: $color;
+    background-color: $bgColor;
     text-align: center;
     font-size: 150%;
-    width: 8em;
-    height: 8em;
-    color: $color;
+    width: 12em;
+    height: 12em;
     border: 10px dotted $color;
     border-radius: 15%;
-    background-color: #e0e0e0;
     padding: 1em;
+    line-height: 1.5;
 
     &:before {
+        @include insetTextShadow($color);
+        line-height: 1;
         display: block;
         text-align: center;
         font-size: 500%;

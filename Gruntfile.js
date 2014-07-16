@@ -176,19 +176,19 @@ module.exports = function(grunt) {
     },
 
     // Add vendor prefixed styles
-    autoprefixer: {
-      options: {
-        browsers: ['last 1 version']
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
-      }
-    },
+    // autoprefixer: {
+    //   options: {
+    //     browsers: ['last 1 version']
+    //   },
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '.tmp/styles/',
+    //       src: '{,*/}*.css',
+    //       dest: '.tmp/styles/'
+    //     }]
+    //   }
+    // },
 
     // Automatically inject Bower components into the HTML file
     bowerInstall: {
@@ -366,7 +366,7 @@ module.exports = function(grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
-      'autoprefixer',
+      // 'autoprefixer',
       'connect:livereload',
       'watch'
     ]);
@@ -382,7 +382,7 @@ module.exports = function(grunt) {
       grunt.task.run([
         'clean:server',
         'concurrent:test',
-        'autoprefixer'
+        // 'autoprefixer'
       ]);
     }
 
@@ -396,7 +396,7 @@ module.exports = function(grunt) {
     'clean:dist',
     'useminPrepare',
     'concurrent:dist',
-    'autoprefixer',
+    // 'autoprefixer',
     'concat',
     'cssmin',
     'uglify',
