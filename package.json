@@ -1,6 +1,6 @@
 {
-  "name": "whiteboard-imageupload",
-  "version": "0.0.0",
+  "name": "streamcards-imageupload",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -29,5 +29,30 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "description": "This experiment lets you upload images into your browser via drag & drop. It displays the uploaded images as `data:url` within an `<img>` tag.",
+  "main": "app/index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/streamcards/imageupload.git"
+  },
+  "keywords": [
+    "dragndrop",
+    "html5",
+    "fileapi",
+    "polymer",
+    "reactive"
+  ],
+  "author": "Jakob Hohlfeld <jakob.hohlfeld@netronaut.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/streamcards/imageupload/issues"
+  },
+  "homepage": "https://github.com/streamcards/imageupload"
 }

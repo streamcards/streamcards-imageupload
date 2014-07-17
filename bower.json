@@ -1,18 +1,15 @@
 {
-  "name": "whiteboard-imageupload",
+  "name": "streamcards-imageupload",
   "private": true,
   "dependencies": {
     "polymer": "Polymer/polymer#~0.3.4",
     "jquery": "~1.11.0",
     "core-elements": "Polymer/core-elements#~0.3.4",
-    "angular": "v1.2.0-build.2916+sha.d15cea4",
+    "angular": "v1.3.0-build.2916+sha.d15cea4",
     "angular-rx": "~0.0.5",
     "angular-sanitize": "v1.3.0-build.2916+sha.d15cea4",
-    "angular-dragdrop-ganarajpr": "~1.0.3",
-    "bootstrap-sass": "~3.0.2",
     "fontawesome": "~4.1.0"
   },
-  "devDependencies": {},
   "overrides": {
     "ace-builds": {
       "main": "src-min-noconflict/ace.js"
@@ -22,5 +19,28 @@
         "dist/rx.all.min.js"
       ]
     }
-  }
+  },
+  "version": "0.0.1",
+  "homepage": "https://github.com/streamcards/imageupload",
+  "authors": [
+    "Jakob Hohlfeld <jakob.hohlfeld@netronaut.de>"
+  ],
+  "description": "Upload images to your browser using drag&drop.",
+  "main": "app/index.html",
+  "keywords": [
+    "dragndrop",
+    "html5",
+    "file-api",
+    "polymer",
+    "reactive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
 }

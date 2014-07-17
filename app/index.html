@@ -41,7 +41,7 @@
     </section>
 
     <section flex id="image-stack">
-      <img ng-repeat="i in images track by i._id" src="{{i.data}}" ng-cloak />
+      <img ng-repeat="i in images track by i._id" ng-src="{{i.data}}" ng-cloak />
     </section>
 
   </main>
@@ -55,8 +55,6 @@
   <script src="bower_components/Rx/dist/rx.all.min.js"></script>
   <script src="bower_components/angular-rx/rx.angular.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/angular-dragdrop-ganarajpr/draganddrop.js"></script>
-  <script src="bower_components/bootstrap-sass/dist/js/bootstrap.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 

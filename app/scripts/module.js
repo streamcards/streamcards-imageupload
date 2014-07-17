@@ -1,6 +1,10 @@
 (function(angular) {
   'use strict';
 
+  if (window.jQuery && (-1 == window.jQuery.event.props.indexOf("dataTransfer"))) {
+    window.jQuery.event.props.push("dataTransfer");
+  }
+
   var app = angular.module('whiteboard', ['rx', 'uuid']);
 
   /**
