@@ -19,49 +19,80 @@ $fa-css-prefix: icon;
 
     "mixins";
 
+/* 
+  Allow angular.js to be loaded in body, hiding cloaked elements until 
+  templates compile.  The !important is important given that there may be 
+  other selectors that are more specific or come later and might alter display.  
+ */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
 body {
     background: #fafafa;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
     color: #333;
-    text-align: center;
 }
 
-.upload-area {
+#drag-area {
 
-    @extend .icon;
-    @extend .icon-cloud-upload;
-
-    $color: desaturate(lighten(blue, 15%), 70%);
-    $bgColor: lighten($color, 30%);
-
-    color: $color;
-    background-color: $bgColor;
     text-align: center;
-    font-size: 150%;
-    width: 12em;
-    height: 12em;
-    border: 10px dotted $color;
-    border-radius: 15%;
-    padding: 1em;
-    line-height: 1.5;
 
-    &:before {
-        @include insetTextShadow($color);
-        line-height: 1;
-        display: block;
+    .upload-area {
+
+        @extend .icon;
+        @extend .icon-cloud-upload;
+
+        $color: desaturate(lighten(blue, 15%), 70%);
+        $bgColor: lighten($color, 30%);
+
+        color: $color;
+        background-color: $bgColor;
         text-align: center;
-        font-size: 500%;
+        width: 12em;
+        height: 12em;
+        border: 10px dotted $color;
+        border-radius: 15%;
+        padding: 1em;
+        line-height: 1.5;
+        box-sizing: border-box;
+
+        &:before {
+            @include insetTextShadow($color);
+            line-height: 1;
+            display: block;
+            text-align: center;
+            font-size: 500%;
+        }
+
+        &.on-drag-hover {
+            opacity: .5;
+        }
+
     }
 
-    &.on-drag-hover {
-        opacity: .5;
+    .upload-area {
+        display: inline-block;
+        margin: 1em;
     }
 
+    ui-progress {
+        font-size: 80%;
+    }
 }
+#image-stack {
 
-.upload-area {
-    display: inline-block;
-    margin: 1em;
+    img {
+        border: 1px solid black;
+        background-color: white;
+        margin: 1em;
+
+        $maxSize: 6em;
+        max-width: $maxSize;
+        max-height: $maxSize;
+        padding: $maxSize *.05;
+    }
 }
 
 .browsehappy {

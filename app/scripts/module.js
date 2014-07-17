@@ -1,13 +1,15 @@
 (function(angular) {
   'use strict';
 
-  var app = angular.module('whiteboard', ['rx']);
+  var app = angular.module('whiteboard', ['rx', 'uuid']);
 
   /**
    * Main Controller
    *
    */
-  app.controller('MainCtrl', function($scope, rx) {
+  app.controller('MainCtrl', function($scope, rx, uuid) {
+
+    $scope.images = [];
 
     var fileStream = new rx.Subject();
     $scope.fileStream = fileStream;
@@ -19,6 +21,14 @@
     fileDataStream.subscribe(function(result) {
 
       console.log(result);
+
+      $scope.$apply(function() {
+        $scope.images.push({
+          _id: uuid.new(),
+          file: result.file,
+          data: result.data
+        });
+      });
 
     });
   });
@@ -80,7 +90,7 @@
 
         // reader.onloadstart = this.onLoadStart;
 
-        reader.readAsBinaryString(file);
+        reader.readAsDataURL(file);
       }
     };
   });
@@ -94,8 +104,8 @@
       restrict: 'E',
       scope: {
         fileStream: '=',
-        fileDataStream: '=',
-        filter: '='
+        filter: '=',
+        fileDataStream: '='
       },
       compile: function(elem) {
         var html = elem.html();
@@ -131,7 +141,7 @@
     return {
       restrict: 'A',
       scope: {
-        fileStream: '=uiDropFiles'
+        fileStream: '=uiDropFileStream'
       },
       link: function(scope, element) {
 

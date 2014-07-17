@@ -10,33 +10,41 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css styles/vendor.css -->
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap-sass/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="import" href="bower_components/polymer/layout.html" />
   <!-- endbuild -->
 </head>
 
-<body ng-app="whiteboard" ng-controller="MainCtrl">
+<body ng-app="whiteboard" ng-controller="MainCtrl" fullbleed>
   <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+  <main layout horizontal>
 
-  <div class="upload-area" ui-drop ui-drop-files="fileStream">
-    Drag any kind of file here to upload
-  </div>
+    <section id="drag-area">
+      <h2 ui-draggable="true">Try dragging this</h2>
 
-  <ui-upload file-stream="fileStream" file-data-stream="fileDataStream" filter="'image\.*'">
-    <ui-progress ng-repeat="f in files" file="f">
-        <div class="name">{{file.name}}</div>
-        <div class="percentage">{{percentage}}%</div>
-    </ui-progress>
-  </ui-upload>
+      <div class="upload-area" ui-drop ui-drop-file-stream="fileStream">
+        Drag any kind of file here to upload
+      </div>
 
-  <h2 ui-draggable="true">Try dragging this</h2>
+      <ui-upload file-stream="fileStream" file-data-stream="fileDataStream" filter="'image\.*'">
+        <ui-progress ng-repeat="f in files" file="f" ng-cloak>
+          <div class="name">{{file.name}}</div>
+          <div class="percentage">{{percentage}}%</div>
+        </ui-progress>
+      </ui-upload>
+    </section>
+
+    <section flex id="image-stack">
+      <img ng-repeat="i in images track by i._id" src="{{i.data}}" ng-cloak />
+    </section>
+
+  </main>
 
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
@@ -53,6 +61,7 @@
   <!-- endbuild -->
 
   <!-- build:js({app,.tmp}) scripts/main.js -->
+  <script src="scripts/uuid.js"></script>
   <script src="scripts/module.js"></script>
   <!-- endbuild -->
 </body>

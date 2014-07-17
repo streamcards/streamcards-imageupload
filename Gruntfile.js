@@ -194,7 +194,11 @@ module.exports = function(grunt) {
     bowerInstall: {
       app: {
         src: ['<%= config.app %>/index.html'],
-        exclude: ['bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js']
+        exclude: [
+          'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap.js',
+          'bower_components/bootstrap-sass/dist/css/bootstrap.css',
+          'bower_components/fontawesome/css/font-awesome.css'
+        ]
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}']
@@ -329,7 +333,7 @@ module.exports = function(grunt) {
           cwd: '<%= config.app %>/styles',
           dest: '.tmp/styles/',
           src: '{,*/}*.css'
-        },{
+        }, {
           expand: true,
           dot: true,
           cwd: '<%= config.app %>/bower_components/fontawesome/fonts',
