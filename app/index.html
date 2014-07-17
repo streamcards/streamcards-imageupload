@@ -29,8 +29,11 @@
     Drag any kind of file here to upload
   </div>
 
-  <ui-upload file-stream="fileStream" filter="'image\.*'">
-    <li ng-repeat="f in files">{{f.name}}</li>
+  <ui-upload file-stream="fileStream" file-data-stream="fileDataStream" filter="'image\.*'">
+    <ui-progress ng-repeat="f in files" file="f">
+        <div class="name">{{file.name}}</div>
+        <div class="percentage">{{percentage}}%</div>
+    </ui-progress>
   </ui-upload>
 
   <h2 ui-draggable="true">Try dragging this</h2>

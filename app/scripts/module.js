@@ -15,23 +15,90 @@
       console.log(file);
     });
 
+    var fileDataStream = $scope.fileDataStream = new rx.Subject();
+    fileDataStream.subscribe(function(result) {
+
+      console.log(result);
+
+    });
   });
 
+
+  /**
+   * Progress directive.
+   *
+   * This directive does the actual loading.
+   * When finished, an event is published on `fileDataStream`, con-
+   * sisting of a result object of the form:
+   *    var obj = {
+   *        file: <File> fileObject,
+   *        data: <String> binaryImageData
+   *    }
+   */
+  app.directive('uiProgress', function($compile) {
+    return {
+      restrict: 'EA',
+      scope: {
+        file: '='
+      },
+      compile: function(elem) {
+        var html = elem.html();
+        return function(scope, element) {
+          element.html($compile(html)(scope));
+        };
+      },
+      controller: function($scope, rx) {
+        $scope.percentage = 0;
+        var file = $scope.file,
+          fileDataStream = $scope.$parent.fileDataStream,
+          reader = new FileReader();
+
+        var updatePercentage = function(percentage) {
+          $scope.$apply(function() {
+            $scope.percentage = percentage;
+          });
+        };
+
+        // track progress
+        reader.onprogress = function(e) {
+          if (!e.lengthComputable) {
+            return;
+          }
+          updatePercentage(Math.round((e.loaded / e.total) * 100));
+        };
+
+        // finalize progress
+        rx.Observable.fromEvent(reader, 'load')
+          .map(function(e) {
+            updatePercentage(100);
+            return {
+              file: file,
+              data: e.target.result
+            };
+          })
+          .subscribe(fileDataStream);
+
+        // reader.onloadstart = this.onLoadStart;
+
+        reader.readAsBinaryString(file);
+      }
+    };
+  });
 
   /**
    * Upload directive
    *
    */
   app.directive('uiUpload', function($compile) {
-    var template;
     return {
       restrict: 'E',
       scope: {
         fileStream: '=',
+        fileDataStream: '=',
         filter: '='
       },
       compile: function(elem) {
-        template = $compile(elem.html());
+        var html = elem.html();
         return function(scope, element, attrs, controller) {
           var filter = new RegExp(scope.filter);
           scope.fileStream
@@ -41,7 +108,7 @@
             .subscribe(function(file) {
               controller.addFile(file);
             });
-          element.replaceWith(template(scope));
+          element.html($compile(html)(scope));
         };
       },
       controller: function($scope) {
