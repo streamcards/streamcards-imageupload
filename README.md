@@ -3,9 +3,9 @@
 This experiment lets you upload images into your browser via drag & drop.
 It displays the uploaded images as `data:url` within an `<img>` tag.
 
-Files upload is dependent on current html5 technology:
+Files upload is dependent on theese current html5 technologies:
 
-- [Native drag-to-browser][0] feature
+- [Native drag-to-browser][0]
 - [File API][1]
 - [FileReader API][2]
 
@@ -39,13 +39,13 @@ That's it!
 
 Navigate to `https://localhost:7000` and you'll see the experiment!
 
-*Having trouble? Throw me a line or report at the github repositories issues list!*
+*Having trouble? Please feel free to throw me a line or report an github issue!*
 
 
 [0]:http://www.html5rocks.com/en/tutorials/dnd/basics/
-[1]:https://developer.mozilla.org/en-US/docs/Web/API/FileReader
-[2]:https://developer.mozilla.org/en-US/docs/Web/API/File
+[2]:https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+[1]:https://developer.mozilla.org/en-US/docs/Web/API/File
 [3]:http://www.polymer-project.org/docs/polymer/layout-attrs.html
 [4]:http://nodejs.org/
-[5]:http://nodejs.org/
+[5]:http://gruntjs.com/
 [6]:http://bower.io/
