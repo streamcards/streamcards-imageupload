@@ -44,8 +44,8 @@ body {
         @extend .icon;
         @extend .icon-cloud-upload;
 
-        $color: desaturate(lighten(blue, 15%), 70%);
-        $bgColor: lighten($color, 30%);
+        $color: lighten(rgb(40, 128, 255), 20%);
+        $bgColor: lighten($color, 18%);
 
         color: $color;
         background-color: $bgColor;
@@ -59,7 +59,7 @@ body {
         box-sizing: border-box;
 
         &:before {
-            @include insetTextShadow($color);
+            @include insetTextShadow($color, $bgColor, 0.5);
             line-height: 1;
             display: block;
             text-align: center;
@@ -83,15 +83,8 @@ body {
 }
 #image-stack {
 
-    img {
-        border: 1px solid black;
-        background-color: white;
+    sc-image {
         margin: 1em;
-
-        $maxSize: 6em;
-        max-width: $maxSize;
-        max-height: $maxSize;
-        padding: $maxSize *.05;
     }
 }
 

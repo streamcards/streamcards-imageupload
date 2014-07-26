@@ -1,8 +1,25 @@
-@mixin insetTextShadow ($bgColor) {
-	background-color: $bgColor;
-	color: transparent;
-	text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
-	-webkit-background-clip: text;
-	   -moz-background-clip: text;
-	        background-clip: text;
+@mixin insetTextShadow ($textColor, $backgroundColor, $steepness) {
+    /* Shadows are visible under slightly transparent text color */
+
+    $distance: 5px * $steepness;
+    $spread: 7.5px * $steepness;
+    color: rgba($textColor, 0.8);
+    text-shadow: 
+    	1px $distance $spread $backgroundColor, 
+    	0 0 0 rgba(black, $steepness), 
+    	1px $distance 0px $backgroundColor;
+
+	/* Don't show shadows when selecting text */
+	&::-moz-selection {
+		background: #5af;
+		color: #fff;
+		text-shadow: none; 
+	}
+
+	&::selection {
+		background: #5af;
+		color: #fff;
+		text-shadow: none;
+	}
+
 }
