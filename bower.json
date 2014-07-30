@@ -41,13 +41,19 @@
       "main": [
         "dist/rx.all.min.js"
       ]
+    },
+    "platform": {
+      "main": "platform.js"
+    },
+    
+    "polymer": {
+      "main": "polymer.js"
     }
   },
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "app/bower_components",
     "test",
     "tests"
   ],

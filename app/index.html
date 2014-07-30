@@ -15,8 +15,22 @@
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
-  <link rel="import" href="bower_components/polymer/layout.html" />
-  <link rel="import" href="bower_components/sc-image/sc-image.html" />
+
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/es5-shim/es5-shim.js"></script>
+  <script src="bower_components/platform/platform.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/Rx/dist/rx.all.min.js"></script>
+  <script src="bower_components/angular-rx/rx.angular.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/json3/lib/json3.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <link rel="import" href="../bower_components/polymer/layout.html" />
+  <link rel="import" href="../bower_components/sc-image/sc-image.html" />
 </head>
 
 <body ng-app="whiteboard" ng-controller="MainCtrl" fullbleed>
@@ -46,19 +60,6 @@
     </section>
 
   </main>
-
-  <!-- build:js scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/es5-shim/es5-shim.js"></script>
-  <script src="bower_components/platform/platform.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/Rx/dist/rx.all.min.js"></script>
-  <script src="bower_components/angular-rx/rx.angular.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="bower_components/json3/lib/json3.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
 
   <!-- build:js({app,.tmp}) scripts/main.js -->
   <script src="scripts/uuid.js"></script>

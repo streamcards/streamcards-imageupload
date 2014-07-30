@@ -232,9 +232,50 @@ module.exports = function(grunt) {
               js: ['concat', 'uglifyjs'],
               css: ['cssmin']
             },
-            post: {}
+            post: {
+              js: [{
+
+                // adding polymer.js to concat list
+                name: 'concat',
+                createConfig: function(context, block) {
+                  var generated = context.options.generated,
+                    path = 'bower_components/polymer/polymer.js',
+                    src = generated.files[0].src;
+                  if (src.indexOf(path) === -1) {
+                    src.push(path);
+                  }
+                }
+              }]
+            }
           }
         }
+      }
+    },
+
+    // used to inline polymer elements
+    // this will copy hml, styles and script directly into inddex.html
+    vulcanize: {
+      default: {
+        options: {
+          csp: true,
+          excludes: {
+            imports: [
+              "polymer.html"
+            ]
+          },
+        },
+        files: {
+          '<%= yeoman.dist %>/index.html': '<%= yeoman.dist %>/index.html'
+        }
+      }
+    },
+
+    dom_munger: {
+      default: {
+        options: {
+          remove: 'link[rel="import"][href$="polymer.html"]'
+        },
+        src: '<%= yeoman.dist %>/index.html'
       }
     },
 
@@ -298,10 +339,11 @@ module.exports = function(grunt) {
     htmlmin: {
       dist: {
         options: {
+          removeComments: true,
+          minifyCSS: true,
           collapseWhitespace: true,
           conservativeCollapse: true,
           collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true,
           removeOptionalTags: true
         },
         files: [{
@@ -355,6 +397,12 @@ module.exports = function(grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+          expand: true,
+          dot: true,
+          cwd: 'bower_components/fontawesome/fonts',
+          dest: '<%= yeoman.dist %>/fonts/',
+          src: '*'
         }]
       },
       styles: {
@@ -443,6 +491,8 @@ module.exports = function(grunt) {
     'uglify',
     'filerev',
     'usemin',
+    'vulcanize',
+    'dom_munger',
     'htmlmin'
   ]);
 
