@@ -11,6 +11,10 @@ Files upload is dependent on theese current html5 technologies:
 
 Also, we're using [polymer][3] to get some basic layout support.
 
+##Demo
+
+There's a [demo][7].
+
 ##Setting up
 
 The setup is run by a [node][4] server and is using [grunt][5] and [bower][6].
@@ -49,3 +53,4 @@ Navigate to `https://localhost:7000` and you'll see the experiment!
 [4]:http://nodejs.org/
 [5]:http://gruntjs.com/
 [6]:http://bower.io/
+[7]:http://streamcards.github.io/imageupload/
