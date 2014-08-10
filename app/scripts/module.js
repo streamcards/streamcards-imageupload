@@ -1,18 +1,18 @@
-(function(angular, jQuery) {
+(function(angular, jQuery, _) {
   'use strict';
 
-  if (jQuery && (-1 == jQuery.event.props.indexOf("dataTransfer"))) {
+  if (jQuery && (-1 === jQuery.event.props.indexOf('dataTransfer'))) {
     // Originally solved by Tim Branyen in his drop file plugin
     // http://dev.aboutnerd.com/jQuery.dropFile/jquery.dropFile.js
     jQuery.event.props.push('dataTransfer');
   }
 
 
-  var app = angular.module('whiteboard', ['rx', 'uuid'])
+  var app = angular.module('streamcards', ['rx', 'uuid'])
     .config(function($sceDelegateProvider) {
       var whiteList = $sceDelegateProvider.resourceUrlWhitelist();
       whiteList.push('data:image**');
-      $sceDelegateProvider.resourceUrlWhitelist(whiteList)
+      $sceDelegateProvider.resourceUrlWhitelist(whiteList);
     });
 
   /**
@@ -175,7 +175,7 @@
           .flatMap(function(e) {
             e.preventDefault();
             var files = [];
-            if (e.dataTransfer.types.indexOf('Files') !== -1) {
+            if (_.contains(e.dataTransfer.types, 'Files') !== -1) {
               for (var i = 0, f;
                 (f = e.dataTransfer.files[i]); i++) {
                 files.push(f);
@@ -210,4 +210,4 @@
     };
   });
 
-})(window.angular, window.jQuery);
+})(window.angular, window.jQuery, window._);

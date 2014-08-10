@@ -237,7 +237,7 @@ module.exports = function(grunt) {
 
                 // adding polymer.js to concat list
                 name: 'concat',
-                createConfig: function(context, block) {
+                createConfig: function(context) {
                   var generated = context.options.generated,
                     path = 'bower_components/polymer/polymer.js',
                     src = generated.files[0].src;
@@ -260,7 +260,7 @@ module.exports = function(grunt) {
           csp: true,
           excludes: {
             imports: [
-              "polymer.html"
+              'polymer.html'
             ]
           },
         },
@@ -270,7 +270,7 @@ module.exports = function(grunt) {
       }
     },
 
-    dom_munger: {
+    'dom_munger': {
       default: {
         options: {
           remove: 'link[rel="import"][href$="polymer.html"]'
